@@ -26,8 +26,15 @@ class App extends Component {
 
   handlePurchase(event, product, quantity) {
     event.preventDefault();
-    event.stopPropogation();
-    fetch('/customer', { method: 'POST', body: JSON.stringify({ product, quantity }) })
+    console.log(product, quantity);
+    fetch('/customer', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ product_id: product, quantity: quantity })
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({ message: data.message });

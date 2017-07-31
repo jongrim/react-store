@@ -7,7 +7,7 @@ class OrderForm extends Component {
 
     this.state = {
       quantity: 0,
-      product: 0
+      product: 1
     };
 
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
@@ -15,18 +15,18 @@ class OrderForm extends Component {
   }
 
   handleQuantityChange(event) {
-    const value = event.target.value;
+    const value = parseInt(event.target.value);
     this.setState({ quantity: value });
   }
 
   handleProductChange(event) {
-    const value = event.target.value;
+    const value = parseInt(event.target.value);
     this.setState({ product: value });
   }
 
   render() {
     return (
-      <form className="orderForm">
+      <form className="orderForm" onSubmit={e => this.props.fnPurchase(e, this.state.product, this.state.quantity)}>
         <select onChange={this.handleProductChange}>
           {this.props.product.map(product =>
             <option key={product.item_id} value={product.item_id}>
@@ -34,12 +34,8 @@ class OrderForm extends Component {
             </option>
           )}
         </select>
-        <input type="number" onChange={this.handleQuantityChange} />
-        <input
-          type="submit"
-          value="Buy Product"
-          onSubmit={e => this.props.fnPurchase(e, this.state.product, this.state.quantity)}
-        />
+        <input type="number" onChange={this.handleQuantityChange} value={this.state.quantity} />
+        <input type="submit" value="Buy Product" />
       </form>
     );
   }

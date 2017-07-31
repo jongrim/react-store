@@ -25,7 +25,9 @@ exports.viewProducts = function() {
 
 exports.purchaseProduct = function(id, qty) {
   return new Promise(function(resolve, reject) {
-    connection.query(`SELECT stock_quantity, price FROM products WHERE item_id = ?`, [id], (err, results, fields) => {
+    console.log(id, qty);
+    connection.execute(`SELECT stock_quantity, price FROM products WHERE item_id = ?`, [id], (err, results, fields) => {
+      if (results.length === 0) return reject('No results!');
       if (results[0].stock_quantity < qty) {
         resolve(`Insufficient quantity!`);
       } else {
