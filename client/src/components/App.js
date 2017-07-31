@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../css/App.css';
-import Customer from './Customer.js';
+import OrderForm from './OrderForm';
+import ProductTable from './ProductTable';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      product: []
+      products: []
     };
 
     this.handlePurchase = this.handlePurchase.bind(this);
@@ -18,8 +19,8 @@ class App extends Component {
       .then(res => {
         return res.json();
       })
-      .then(product => {
-        this.setState({ product });
+      .then(products => {
+        this.setState({ products });
       });
   }
 
@@ -43,7 +44,8 @@ class App extends Component {
               </h1>
             </div>
           : <div />}
-        <Customer product={this.state.product} fnPurchase={this.handlePurchase} />
+        <ProductTable products={this.state.products} />
+        <OrderForm product={this.state.products} fnPurchase={this.handlePurchase} />
       </div>
     );
   }
