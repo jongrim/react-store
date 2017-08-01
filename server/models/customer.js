@@ -1,12 +1,7 @@
 const mysql = require('mysql2');
+const config = require('./config');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'bamazon',
-  multipleStatements: true
-});
+const connection = mysql.createConnection(config);
 
 exports.getAll = function() {
   return new Promise(function(resolve, reject) {
