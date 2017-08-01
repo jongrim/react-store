@@ -16,13 +16,6 @@ exports.getAll = function() {
   });
 };
 
-exports.viewProducts = function() {
-  connection.query(`SELECT item_id, product_name, price FROM products`, function(err, results, fields) {
-    if (err) throw err;
-    return results;
-  });
-};
-
 exports.purchaseProduct = function(id, qty) {
   return new Promise(function(resolve, reject) {
     console.log(id, qty);
