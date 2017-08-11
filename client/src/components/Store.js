@@ -14,7 +14,7 @@ class Store extends Component {
   }
 
   componentDidMount() {
-    fetch('/customer')
+    fetch('/api/products')
       .then(res => {
         return res.json();
       })
