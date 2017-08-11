@@ -15,12 +15,12 @@ class OrderForm extends Component {
   }
 
   handleQuantityChange(event) {
-    const value = parseInt(event.target.value);
+    const value = parseInt(event.target.value, 10);
     this.setState({ quantity: value });
   }
 
   handleProductChange(event) {
-    const value = parseInt(event.target.value);
+    const value = parseInt(event.target.value, 10);
     this.setState({ product: value });
   }
 
