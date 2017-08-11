@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var customerRouter = require('./routes/customer.js');
 var managerRouter = require('./routes/manager');
+var api = require('./api/api');
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/customer', customerRouter);
 app.use('/manager', managerRouter);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
