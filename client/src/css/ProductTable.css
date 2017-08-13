@@ -1,0 +1,7 @@
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-basis: 640px;
+  flex-grow: 1;
+}
