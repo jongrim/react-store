@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatPrice } from '../utils/utils';
+import ProductCard from './ProductCard';
+import '../css/ProductTable.css';
 
 const ProductTable = props => {
   return (
-    <div>
+    <div className="product-container">
       {props.products.map(product =>
-        <div key={product.item_id}>
-          <h3>
-            {product.product_name}
-          </h3>
-          <p>
-            {formatPrice(product.price)}
-          </p>
-        </div>
+        <ProductCard key={product.item_id} id={product.item_id} name={product.product_name} price={product.price} />
       )}
     </div>
   );
