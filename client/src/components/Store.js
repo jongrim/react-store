@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OrderForm from './OrderForm';
 import ProductTable from './ProductTable';
+import '../css/Store.css';
 
 class Store extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Store extends Component {
 
   render() {
     return (
-      <div>
+      <div className="store-front">
         {this.state.message
           ? <div>
               <h1>
