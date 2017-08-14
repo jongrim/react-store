@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Button.css';
+import PropTypes from 'prop-types';
 
 const Button = props => {
   const style = {
@@ -13,7 +13,7 @@ const Button = props => {
     cursor: 'pointer'
   };
   return (
-    <button className="button" style={style}>
+    <button className="button" style={style} onClick={props.clickAction}>
       {props.children}
     </button>
   );
@@ -24,4 +24,9 @@ Button.defaultProps = {
   small: true
 };
 
+Button.propTypes = {
+  bgColor: PropTypes.string,
+  small: PropTypes.bool,
+  clickAction: PropTypes.func.isRequired
+};
 export default Button;

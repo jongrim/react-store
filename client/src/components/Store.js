@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cart from './Cart';
 import OrderForm from './OrderForm';
 import ProductTable from './ProductTable';
 import '../css/Store.css';
@@ -8,10 +9,12 @@ class Store extends Component {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      cart: []
     };
 
     this.handlePurchase = this.handlePurchase.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +43,11 @@ class Store extends Component {
       });
   }
 
+  addToCart(event, product) {
+    event.preventDefault();
+    console.log('add to cart');
+  }
+
   render() {
     return (
       <div className="store-front">
@@ -50,8 +58,9 @@ class Store extends Component {
               </h1>
             </div>
           : <div />}
-        <ProductTable products={this.state.products} />
-        <OrderForm product={this.state.products} fnPurchase={this.handlePurchase} />
+        <ProductTable products={this.state.products} addToCart={this.addToCart} />
+        <Cart />
+        {/* <OrderForm product={this.state.products} fnPurchase={this.handlePurchase} /> */}
       </div>
     );
   }

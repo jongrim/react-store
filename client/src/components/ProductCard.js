@@ -13,7 +13,9 @@ const ProductCard = props => {
       <p>
         {formatPrice(props.price)}
       </p>
-      <Button small={false}>Add to cart</Button>
+      <Button small={false} clickAction={props.addToCart}>
+        Add to cart
+      </Button>
     </div>
   );
 };
@@ -21,7 +23,8 @@ const ProductCard = props => {
 ProductCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired
+  price: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired
 };
 
 export default ProductCard;
