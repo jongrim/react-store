@@ -5,6 +5,12 @@ import { formatPrice } from '../utils/utils';
 import '../css/ProductCard.css';
 
 const ProductCard = props => {
+  const product = {
+    id: props.id,
+    name: props.name,
+    price: props.price
+  };
+
   return (
     <div className="product-card" data-item-id={props.id}>
       <h3>
@@ -13,7 +19,7 @@ const ProductCard = props => {
       <p>
         {formatPrice(props.price)}
       </p>
-      <Button small={false} clickAction={props.addToCart}>
+      <Button small={false} clickAction={props.addToCart} dataObj={product}>
         Add to cart
       </Button>
     </div>

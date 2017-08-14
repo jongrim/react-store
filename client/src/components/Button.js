@@ -13,7 +13,12 @@ const Button = props => {
     cursor: 'pointer'
   };
   return (
-    <button className="button" style={style} onClick={props.clickAction}>
+    <button
+      className="button"
+      style={style}
+      onClick={e => {
+        props.clickAction(e, props.dataObj);
+      }}>
       {props.children}
     </button>
   );
@@ -27,6 +32,7 @@ Button.defaultProps = {
 Button.propTypes = {
   bgColor: PropTypes.string,
   small: PropTypes.bool,
-  clickAction: PropTypes.func.isRequired
+  clickAction: PropTypes.func.isRequired,
+  dataObj: PropTypes.object
 };
 export default Button;

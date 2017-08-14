@@ -9,8 +9,15 @@ const Cart = props => {
   };
   return (
     <div style={style}>
-      <p>First</p>
-      <p>Second</p>
+      {props.products
+        ? props.products.map(product => {
+            return (
+              <p>
+                {product.name} - ${product.price}
+              </p>
+            );
+          })
+        : <div />}
     </div>
   );
 };

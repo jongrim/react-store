@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
-import OrderForm from './OrderForm';
 import ProductTable from './ProductTable';
 import '../css/Store.css';
 
@@ -45,7 +44,13 @@ class Store extends Component {
 
   addToCart(event, product) {
     event.preventDefault();
-    console.log('add to cart');
+    console.log(`add ${product.id} to cart`);
+    this.setState(prevState => {
+      let cart = prevState.cart.concat([product]);
+      return {
+        cart
+      };
+    });
   }
 
   render() {
@@ -58,9 +63,11 @@ class Store extends Component {
               </h1>
             </div>
           : <div />}
-        <ProductTable products={this.state.products} addToCart={this.addToCart} />
-        <Cart />
-        {/* <OrderForm product={this.state.products} fnPurchase={this.handlePurchase} /> */}
+        <ProductTable
+          products={this.state.products}
+          addToCart={this.addToCart}
+        />
+        <Cart products={this.state.cart} />
       </div>
     );
   }
