@@ -42,9 +42,7 @@ class Store extends Component {
       });
   }
 
-  addToCart(event, product) {
-    event.preventDefault();
-    console.log(`add ${product.id} to cart`);
+  addToCart(product) {
     this.setState(prevState => {
       let cart = prevState.cart.concat([product]);
       return {
@@ -56,13 +54,6 @@ class Store extends Component {
   render() {
     return (
       <div className="store-front">
-        {this.state.message
-          ? <div>
-              <h1>
-                {this.state.message}
-              </h1>
-            </div>
-          : <div />}
         <ProductTable
           products={this.state.products}
           addToCart={this.addToCart}

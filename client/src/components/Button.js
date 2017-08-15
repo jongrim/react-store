@@ -18,8 +18,8 @@ const Button = props => {
     <button
       className="button"
       style={style}
-      onClick={e => {
-        props.clickAction(e, props.dataObj);
+      onClick={() => {
+        props.clickAction(props.dataObj);
       }}>
       {props.children}
     </button>

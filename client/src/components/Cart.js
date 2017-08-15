@@ -30,8 +30,8 @@ const Cart = props => {
           }, 0)
         )}
       </h2>
-      {props.products.map(product => {
-        return <CartItem item={product.name} price={product.price} />;
+      {props.products.map((product, i) => {
+        return <CartItem key={i} item={product.name} price={product.price} />;
       })}
     </div>
   );
