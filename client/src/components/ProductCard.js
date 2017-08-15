@@ -19,7 +19,14 @@ const ProductCard = props => {
       <p>
         {formatPrice(props.price)}
       </p>
-      <Button small={false} clickAction={props.addToCart} dataObj={product}>
+      <Button
+        small={true}
+        textAlign="left"
+        bgColor="transparent"
+        boxShadow="none"
+        color="#2D5199"
+        clickAction={props.addToCart}
+        dataObj={product}>
         Add to cart
       </Button>
     </div>

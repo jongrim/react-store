@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatPrice } from '../utils/utils';
+import CartItem from './CartItem';
 
 const Cart = props => {
   const style = {
@@ -13,23 +14,25 @@ const Cart = props => {
     margin: '10px 12px 0px 0px',
     padding: '8px'
   };
+
+  const cartTotal = {
+    color: '#333333',
+    borderBottom: '2px solid #333333'
+  };
+
   return (
     <div style={style}>
-      {props.products.map(product => {
-        return (
-          <p>
-            {product.name} - ${product.price}
-          </p>
-        );
-      })}
-      <p>
+      <h2 style={cartTotal}>
         Cart total:{' '}
         {formatPrice(
           props.products.reduce((acc, cur) => {
             return acc + parseFloat(cur.price);
           }, 0)
         )}
-      </p>
+      </h2>
+      {props.products.map(product => {
+        return <CartItem item={product.name} price={product.price} />;
+      })}
     </div>
   );
 };
