@@ -67,7 +67,7 @@ class Store extends Component {
           products={this.state.products}
           addToCart={this.addToCart}
         />
-        <Cart products={this.state.cart} />
+        {this.state.cart.length > 0 && <Cart products={this.state.cart} />}
       </div>
     );
   }
