@@ -1,19 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../css/Nav.css';
+import { NavLink } from 'react-router-dom';
 
-const Nav = props => {
+const navbarStyle = {
+  height: '100%',
+  width: '100%',
+  backgroundColor: '#2d5199',
+  display: 'flex'
+};
+
+const navbarLinkStyle = {
+  color: '#f5f5f5',
+  textDecoration: 'none',
+  padding: '1em'
+};
+
+const activeStyle = {
+  backgroundColor: 'rgba(0, 0, 0, 0.65)'
+};
+
+const Nav = () => {
   return (
-    <div className="navbar">
-      <Link to="/" className="navbar-link">
-        <h2>Home</h2>
-      </Link>
-      <Link to="/shop" className="navbar-link">
-        <h2>Shopping</h2>
-      </Link>
-      <Link to="/manage" className="navbar-link">
-        <h2>Manage</h2>
-      </Link>
+    <div style={navbarStyle}>
+      <NavLink exact to="/" style={navbarLinkStyle} activeStyle={activeStyle}>
+        Home
+      </NavLink>
+      <NavLink to="/shop" style={navbarLinkStyle} activeStyle={activeStyle}>
+        Shop
+      </NavLink>
     </div>
   );
 };

@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from './ProductCard';
-import '../css/ProductTable.css';
+
+const style = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  alignContent: 'flex-start',
+  flexWrap: 'wrap',
+  flexBasis: '640px',
+  flexGrow: '1',
+  padding: '0 1em'
+};
 
 const ProductTable = props => {
   return (
-    <div className="product-container">
+    <div style={style}>
       {props.products.map(product =>
         <ProductCard
           key={product.item_id}
