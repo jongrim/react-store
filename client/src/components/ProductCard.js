@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button, { BlueButton } from './Button';
 import PropTypes from 'prop-types';
 import { formatPrice } from '../utils/utils';
 import '../css/ProductCard.css';
@@ -19,16 +19,9 @@ const ProductCard = props => {
       <p>
         {formatPrice(props.price)}
       </p>
-      <Button
-        small={true}
-        textAlign="left"
-        bgColor="transparent"
-        boxShadow="none"
-        color="#2D5199"
-        clickAction={props.addToCart}
-        dataObj={product}>
+      <BlueButton small clickAction={props.addToCart} dataObj={product}>
         Add to cart
-      </Button>
+      </BlueButton>
     </div>
   );
 };
