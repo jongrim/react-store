@@ -10,7 +10,7 @@ const style = {
   flexWrap: 'wrap',
   flexBasis: '640px',
   flexGrow: '1',
-  padding: '0 1em'
+  padding: '0'
 };
 
 const ProductTable = props => {

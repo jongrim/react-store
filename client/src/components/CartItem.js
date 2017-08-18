@@ -3,14 +3,17 @@ import { formatPrice } from '../utils/utils';
 
 const style = {
   display: 'flex',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  fontSize: '0.8em',
+  flexShrink: '0'
 };
 
 const CartItem = props => {
+  let { item, quantity, price } = props;
   return (
     <div style={style}>
       <p>
-        {props.item}
+        {item} {quantity > 1 ? `(x${quantity})` : null}
       </p>
       <p>
         {formatPrice(props.price)}

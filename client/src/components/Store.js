@@ -44,7 +44,14 @@ class Store extends Component {
 
   addToCart(product) {
     this.setState(prevState => {
-      let cart = prevState.cart.concat([product]);
+      let cart = prevState.cart;
+      let itemIndex = cart.findIndex(item => item.name === product.name);
+      if (itemIndex !== -1) {
+        cart[itemIndex].quantity++;
+      } else {
+        product.quantity = 1;
+        cart.push(product);
+      }
       return {
         cart
       };
@@ -58,7 +65,7 @@ class Store extends Component {
           products={this.state.products}
           addToCart={this.addToCart}
         />
-        {this.state.cart.length > 0 && <Cart products={this.state.cart} />}
+        <Cart products={this.state.cart} />
       </div>
     );
   }
