@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
 
+const tabListStyle = {
+  display: 'flex'
+};
+
+const activeTabStyle = {
+  padding: '0 1em 0 1em',
+  borderBottom: '2px solid black'
+};
+
+const tabStyle = {
+  padding: '0 1em 0 1em'
+};
+
 class Tabs extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +58,7 @@ class TabList extends Component {
         }
       });
     });
-    return <div>{children}</div>;
+    return <div style={tabListStyle}>{children}</div>;
   }
 }
 
@@ -53,7 +66,9 @@ class Tab extends Component {
   render() {
     const { isDisabled, isActive } = this.props;
     return (
-      <div onClick={isDisabled ? null : this.props.onActivate}>
+      <div
+        style={isActive ? activeTabStyle : tabStyle}
+        onClick={isDisabled ? null : this.props.onActivate}>
         {this.props.children}
       </div>
     );

@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
 import ProductTable from './ProductTable';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from './Tabs.js';
+import API from '../utils/api.js';
 import '../css/Store.css';
+
+const storeFrontStyle = {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-around',
+  flexWrap: 'wrap',
+  paddingTop: '1em'
+};
 
 class Store extends Component {
   constructor(props) {
@@ -17,13 +27,9 @@ class Store extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/products')
-      .then(res => {
-        return res.json();
-      })
-      .then(products => {
-        this.setState({ products });
-      });
+    API.getAllBooks().then(products => {
+      this.setState({ products });
+    });
   }
 
   handlePurchase(event, product, quantity) {
@@ -60,11 +66,18 @@ class Store extends Component {
 
   render() {
     return (
-      <div className="store-front">
-        <ProductTable
-          products={this.state.products}
-          addToCart={this.addToCart}
-        />
+      <div style={storeFrontStyle}>
+        <Tabs>
+          <TabList>
+            <Tab>Books</Tab>
+            <Tab>Movies</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>Books here</TabPanel>
+            <TabPanel>Movies here</TabPanel>
+          </TabPanels>
+        </Tabs>
+
         <Cart products={this.state.cart} />
       </div>
     );
@@ -72,3 +85,10 @@ class Store extends Component {
 }
 
 export default Store;
+
+/* 
+<ProductTable
+          products={this.state.products}
+          addToCart={this.addToCart}
+        />
+        */

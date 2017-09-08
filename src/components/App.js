@@ -10,13 +10,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav />
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return <p>Hi</p>;
-            }}
-          />
+          <Route exact path="/" render={() => <p>Hi</p>} />
           <Route path="/shop" component={Store} />
         </div>
       </Router>
