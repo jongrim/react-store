@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
 import ProductTable from './ProductTable';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from './Tabs.js';
+import { Sidebar, SidebarLink } from './Sidebar.js';
+import { Route, Link } from 'react-router-dom';
 import API from '../utils/api.js';
 import '../css/Store.css';
 
@@ -24,12 +25,27 @@ class Store extends Component {
 
     this.handlePurchase = this.handlePurchase.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.loadBooks = this.loadBooks.bind(this);
+    this.loadMovies = this.loadMovies.bind(this);
   }
 
   componentDidMount() {
     API.getAllBooks().then(products => {
       this.setState({ products });
     });
+  }
+
+  loadBooks() {
+    API.getAllBooks().then(products => {
+      this.setState({ products });
+    });
+  }
+
+  loadMovies() {
+    console.log('Loading movies');
+    // API.getAllBooks().then(products => {
+    //   this.setState({ products });
+    // });
   }
 
   handlePurchase(event, product, quantity) {
@@ -67,16 +83,17 @@ class Store extends Component {
   render() {
     return (
       <div style={storeFrontStyle}>
-        <Tabs>
-          <TabList>
-            <Tab>Books</Tab>
-            <Tab>Movies</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>Books here</TabPanel>
-            <TabPanel>Movies here</TabPanel>
-          </TabPanels>
-        </Tabs>
+        <Sidebar>
+          <SidebarLink to="/shop/books">Books</SidebarLink>
+          <SidebarLink to="/shop/movies">Movies</SidebarLink>
+        </Sidebar>
+        <Route
+          path="/shop/books"
+          render={() => (
+            <ProductTable productAPI="/books" addToCart={this.addToCart} />
+          )}
+          productAPI="/books"
+        />
 
         <Cart products={this.state.cart} />
       </div>

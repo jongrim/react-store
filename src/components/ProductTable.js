@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from './ProductCard';
+import API from '../utils/api.js';
 
 const style = {
   display: 'flex',
@@ -13,25 +14,44 @@ const style = {
   padding: '0'
 };
 
-const ProductTable = props => {
-  return (
-    <div style={style}>
-      {props.products.map(product =>
-        <ProductCard
-          key={product.item_id}
-          id={product.item_id}
-          name={product.product_name}
-          price={product.price}
-          addToCart={props.addToCart}
-        />
-      )}
-    </div>
-  );
-};
+export default class ProductTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: []
+    };
+  }
+
+  componentDidMount() {
+    const { productAPI } = this.props;
+    API.getResource(productAPI).then(data => {
+      console.log(data);
+      this.setState({
+        products: data
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div style={style}>
+        {this.state.products.length > 0 ? (
+          this.state.products.map(product => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.title}
+              price={product.price}
+              addToCart={this.props.addToCart}
+            />
+          ))
+        ) : null}
+      </div>
+    );
+  }
+}
 
 ProductTable.propTypes = {
-  products: PropTypes.array.isRequired,
+  productAPI: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired
 };
-
-export default ProductTable;
