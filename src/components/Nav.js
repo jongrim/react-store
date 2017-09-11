@@ -2,16 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const navbarStyle = {
-  height: '100%',
-  width: '100%',
   backgroundColor: '#2d5199',
   display: 'flex'
 };
 
 const navbarLinkStyle = {
+  width: '60px',
   color: '#f5f5f5',
   textDecoration: 'none',
-  padding: '1em'
+  padding: '1em',
+  textAlign: 'center'
 };
 
 const activeStyle = {
