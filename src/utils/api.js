@@ -15,9 +15,16 @@ function getOneBook(id) {
   });
 }
 
+function getResource(path) {
+  return axios.get(`${API_URL}${path}`).then(result => {
+    return result.data;
+  });
+}
+
 const API = {
   getAllBooks: getBooks,
-  getOneBook: getOneBook
+  getOneBook: getOneBook,
+  getResource: getResource
 };
 
 export default API;
