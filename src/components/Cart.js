@@ -8,12 +8,9 @@ const Cart = props => {
     flexDirection: 'column',
     flexShrink: '1',
     flexBasis: '265px',
-    backgroundColor: '#fafafa',
-    boxShadow: '0px 1px 10px 1px rgba(0, 0, 0, 0.25)',
+    backgroundColor: '#f5f5f5',
     alignSelf: 'flex-start',
-    margin: '1em',
-    padding: '8px',
-    maxHeight: '85vh',
+    height: '100%',
     overflowY: 'auto'
   };
 
@@ -22,16 +19,18 @@ const Cart = props => {
   return (
     <div style={style}>
       <CartHeading>
-        {products.length > 0
-          ? <div>
-              Subtotal:{' '}
-              {formatPrice(
-                products.reduce((acc, cur) => {
-                  return acc + parseFloat(cur.price) * cur.quantity;
-                }, 0)
-              )}
-            </div>
-          : <div>Cart empty</div>}
+        {products.length > 0 ? (
+          <div>
+            Subtotal:{' '}
+            {formatPrice(
+              products.reduce((acc, cur) => {
+                return acc + parseFloat(cur.price) * cur.quantity;
+              }, 0)
+            )}
+          </div>
+        ) : (
+          <div>Cart empty</div>
+        )}
       </CartHeading>
       {products.map((product, i) => {
         return (
@@ -50,14 +49,13 @@ const Cart = props => {
 const cartHeading = {
   color: '#333333',
   borderBottom: '2px solid #333333',
-  fontSize: '1em'
+  fontSize: '1em',
+  padding: '0 0 0 0.5em',
+  marginBottom: '6px'
 };
+
 const CartHeading = props => {
-  return (
-    <h2 style={cartHeading}>
-      {props.children}
-    </h2>
-  );
+  return <h2 style={cartHeading}>{props.children}</h2>;
 };
 
 export default Cart;

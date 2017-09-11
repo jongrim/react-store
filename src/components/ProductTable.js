@@ -12,7 +12,7 @@ const style = {
   flexBasis: '640px',
   flexGrow: '1',
   padding: '0',
-  overflowY: 'scroll'
+  overflowY: 'auto'
 };
 
 export default class ProductTable extends Component {
