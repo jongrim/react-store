@@ -20,14 +20,14 @@ const Cart = props => {
     <div style={style}>
       <CartHeading>
         {products.length > 0 ? (
-          <div>
+          <span>
             Subtotal:{' '}
             {formatPrice(
               products.reduce((acc, cur) => {
                 return acc + parseFloat(cur.price) * cur.quantity;
               }, 0)
             )}
-          </div>
+          </span>
         ) : (
           <div>Cart empty</div>
         )}
@@ -51,11 +51,16 @@ const cartHeading = {
   borderBottom: '2px solid #333333',
   fontSize: '1em',
   padding: '0 0 0 0.5em',
-  marginBottom: '6px'
+  marginBottom: '6px',
+  textAlign: 'center'
 };
 
 const CartHeading = props => {
-  return <h2 style={cartHeading}>{props.children}</h2>;
+  return (
+    <h2 style={cartHeading}>
+      <span className="fa fa-shopping-cart" /> {props.children}
+    </h2>
+  );
 };
 
 export default Cart;

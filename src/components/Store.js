@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import Cart from './Cart';
 import ProductTable from './ProductTable';
 import { Sidebar, SidebarLink } from './Sidebar.js';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import API from '../utils/api.js';
-import '../css/Store.css';
 
 const storeFrontStyle = {
+  height: '100%',
   width: '100%',
-  display: 'flex',
-  justifyContent: 'space-around',
-  flexWrap: 'wrap',
-  paddingTop: '1em'
+  display: 'flex'
 };
 
 class Store extends Component {
@@ -19,33 +16,11 @@ class Store extends Component {
     super(props);
 
     this.state = {
-      products: [],
       cart: []
     };
 
     this.handlePurchase = this.handlePurchase.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.loadBooks = this.loadBooks.bind(this);
-    this.loadMovies = this.loadMovies.bind(this);
-  }
-
-  componentDidMount() {
-    API.getAllBooks().then(products => {
-      this.setState({ products });
-    });
-  }
-
-  loadBooks() {
-    API.getAllBooks().then(products => {
-      this.setState({ products });
-    });
-  }
-
-  loadMovies() {
-    console.log('Loading movies');
-    // API.getAllBooks().then(products => {
-    //   this.setState({ products });
-    // });
   }
 
   handlePurchase(event, product, quantity) {
@@ -86,6 +61,7 @@ class Store extends Component {
         <Sidebar>
           <SidebarLink to="/shop/books">Books</SidebarLink>
           <SidebarLink to="/shop/movies">Movies</SidebarLink>
+          <SidebarLink to="/shop/games">Games</SidebarLink>
         </Sidebar>
         <Route
           path="/shop/books"
@@ -100,18 +76,12 @@ class Store extends Component {
             <ProductTable productAPI="/movies" addToCart={this.addToCart} />
           )}
         />
-
-        <Cart products={this.state.cart} />
+        {this.state.cart.length > 0 ? (
+          <Cart products={this.state.cart} />
+        ) : null}
       </div>
     );
   }
 }
 
 export default Store;
-
-/* 
-<ProductTable
-          products={this.state.products}
-          addToCart={this.addToCart}
-        />
-        */
