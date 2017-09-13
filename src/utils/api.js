@@ -41,12 +41,19 @@ function getMovieJSON(title) {
   });
 }
 
+function getGame(id) {
+  return axios.get(`${API_URL}/games/${id}`).then(result => {
+    return result.data;
+  });
+}
+
 const API = {
   getAllBooks: getBooks,
   getOneBook: getOneBook,
   getResource: getResource,
   getGoogleBookJSON,
-  getMovieJSON
+  getMovieJSON,
+  getGame
 };
 
 export default API;
