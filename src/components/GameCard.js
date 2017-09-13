@@ -6,14 +6,16 @@ export default class GameCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgUrl: null
+      imgUrl: null,
+      dataObj: null
     };
   }
 
   componentDidMount() {
     API.getGame(this.props.id).then(result => {
       this.setState({
-        imgUrl: result.imageUrl
+        imgUrl: result.imageUrl,
+        dataObj: result
       });
     });
   }

@@ -6,15 +6,16 @@ export default class BookCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgUrl: null
+      imgUrl: null,
+      dataObj: null
     };
   }
 
   componentDidMount() {
     API.getGoogleBookJSON(this.props.name).then(result => {
-      console.log(result);
       const imgUrl = result.items[0].volumeInfo.imageLinks.smallThumbnail;
       this.setState({
+        dataObj: result.items[0],
         imgUrl
       });
     });
