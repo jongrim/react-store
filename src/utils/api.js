@@ -2,8 +2,13 @@ const axios = require('axios');
 
 const API_URL =
   process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001/api';
+
 const GOOGLE_API_URL = title => {
   return `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCZvpk9nL5gtEEa1Mg94gAxVm2Bpjb74jo`;
+};
+
+const OMDB_API_URL = title => {
+  return `http://www.omdbapi.com/?apikey=40e9cece&t=${title}`;
 };
 
 function getBooks() {
@@ -30,11 +35,18 @@ function getGoogleBookJSON(title) {
   });
 }
 
+function getMovieJSON(title) {
+  return axios.get(OMDB_API_URL(title)).then(result => {
+    return result.data;
+  });
+}
+
 const API = {
   getAllBooks: getBooks,
   getOneBook: getOneBook,
   getResource: getResource,
-  getGoogleBookJSON
+  getGoogleBookJSON,
+  getMovieJSON
 };
 
 export default API;
