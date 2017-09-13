@@ -76,6 +76,12 @@ class Store extends Component {
             <ProductTable productAPI="/movies" addToCart={this.addToCart} />
           )}
         />
+        <Route
+          path="/shop/games"
+          render={() => (
+            <ProductTable productAPI="/games" addToCart={this.addToCart} />
+          )}
+        />
         {this.state.cart.length > 0 ? (
           <Cart products={this.state.cart} />
         ) : null}

@@ -26,7 +26,6 @@ export default class ProductTable extends Component {
   componentDidMount() {
     const { productAPI } = this.props;
     API.getResource(productAPI).then(data => {
-      console.log(data);
       this.setState({
         products: data
       });

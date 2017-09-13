@@ -8,10 +8,12 @@ const Cart = props => {
     flexDirection: 'column',
     flexShrink: '1',
     flexBasis: '265px',
-    backgroundColor: '#f5f5f5',
+    borderLeft: '1px solid #f5f5f5',
+    // backgroundColor: '#f5f5f5',
     alignSelf: 'flex-start',
     height: '100%',
-    overflowY: 'auto'
+    overflowY: 'auto',
+    padding: '0 4px'
   };
 
   const { products } = props;
