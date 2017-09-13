@@ -11,8 +11,7 @@ const style = {
   flexWrap: 'wrap',
   flexBasis: '640px',
   flexGrow: '1',
-  padding: '0',
-  overflowY: 'auto'
+  overflow: 'auto'
 };
 
 export default class ProductTable extends Component {
