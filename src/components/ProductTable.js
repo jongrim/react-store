@@ -32,11 +32,12 @@ export default class ProductTable extends Component {
   }
 
   render() {
+    const Wrapper = this.props.cardType;
     return (
       <div style={style}>
         {this.state.products.length > 0 ? (
           this.state.products.map(product => (
-            <ProductCard
+            <Wrapper
               key={product.id}
               id={product.id}
               name={product.title}
@@ -52,5 +53,6 @@ export default class ProductTable extends Component {
 
 ProductTable.propTypes = {
   productAPI: PropTypes.string.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  cardType: PropTypes.func.isRequired
 };

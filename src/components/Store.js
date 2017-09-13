@@ -5,6 +5,10 @@ import { Sidebar, SidebarLink } from './Sidebar.js';
 import { Route } from 'react-router-dom';
 import API from '../utils/api.js';
 
+import BookCard from './BookCard';
+import GameCard from './GameCard';
+import MovieCard from './MovieCard';
+
 const storeFrontStyle = {
   height: '100%',
   width: '100%',
@@ -66,20 +70,32 @@ class Store extends Component {
         <Route
           path="/shop/books"
           render={() => (
-            <ProductTable productAPI="/books" addToCart={this.addToCart} />
+            <ProductTable
+              productAPI="/books"
+              addToCart={this.addToCart}
+              cardType={BookCard}
+            />
           )}
           productAPI="/books"
         />
         <Route
-          path="/shop/movies"
+          path="/shop/games"
           render={() => (
-            <ProductTable productAPI="/movies" addToCart={this.addToCart} />
+            <ProductTable
+              productAPI="/games"
+              addToCart={this.addToCart}
+              cardType={GameCard}
+            />
           )}
         />
         <Route
-          path="/shop/games"
+          path="/shop/movies"
           render={() => (
-            <ProductTable productAPI="/games" addToCart={this.addToCart} />
+            <ProductTable
+              productAPI="/movies"
+              addToCart={this.addToCart}
+              cardType={MovieCard}
+            />
           )}
         />
         {this.state.cart.length > 0 ? (
