@@ -2,6 +2,9 @@ const axios = require('axios');
 
 const API_URL =
   process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001/api';
+const GOOGLE_API_URL = title => {
+  return `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCZvpk9nL5gtEEa1Mg94gAxVm2Bpjb74jo`;
+};
 
 function getBooks() {
   return axios.get(`${API_URL}/books`).then(result => {
@@ -21,10 +24,17 @@ function getResource(path) {
   });
 }
 
+function getGoogleBookJSON(title) {
+  return axios.get(GOOGLE_API_URL(title)).then(result => {
+    return result.data;
+  });
+}
+
 const API = {
   getAllBooks: getBooks,
   getOneBook: getOneBook,
-  getResource: getResource
+  getResource: getResource,
+  getGoogleBookJSON
 };
 
 export default API;

@@ -15,7 +15,7 @@ const style = {
 };
 
 const ProductCard = props => {
-  let { id, name, price } = props;
+  const { id, name, price, addToCart, imgUrl } = props;
   const product = {
     id,
     name,
@@ -24,13 +24,10 @@ const ProductCard = props => {
 
   return (
     <div className="product-card" style={style}>
-      <h3>
-        {name}
-      </h3>
-      <p>
-        {formatPrice(price)}
-      </p>
-      <BlueButton small clickAction={props.addToCart} dataObj={product}>
+      <h3>{name}</h3>
+      <img src={imgUrl} alt="Product thumbnail" />
+      <p>{formatPrice(price)}</p>
+      <BlueButton small clickAction={addToCart} dataObj={product}>
         Add to cart
       </BlueButton>
     </div>
@@ -41,7 +38,8 @@ ProductCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  imgUrl: PropTypes.string
 };
 
 export default ProductCard;
