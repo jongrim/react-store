@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
 import ProductTable from './ProductTable';
+import ProductDetail from './ProductDetail.js';
+import BookDetail from './BookDetail.js';
+import GameDetail from './GameDetail.js';
+import MovieDetail from './MovieDetail.js';
 import { Sidebar, SidebarLink } from './Sidebar.js';
 import { Route } from 'react-router-dom';
 import API from '../utils/api.js';
@@ -68,6 +72,7 @@ class Store extends Component {
           <SidebarLink to="/shop/games">Games</SidebarLink>
         </Sidebar>
         <Route
+          exact
           path="/shop/books"
           render={() => (
             <ProductTable
@@ -76,9 +81,9 @@ class Store extends Component {
               cardType={BookCard}
             />
           )}
-          productAPI="/books"
         />
         <Route
+          exact
           path="/shop/games"
           render={() => (
             <ProductTable
@@ -89,6 +94,7 @@ class Store extends Component {
           )}
         />
         <Route
+          exact
           path="/shop/movies"
           render={() => (
             <ProductTable
@@ -98,6 +104,44 @@ class Store extends Component {
             />
           )}
         />
+
+        <Route
+          path="/shop/books/:id"
+          render={props => {
+            return (
+              <ProductDetail
+                {...props}
+                productAPI={API.getOneBook}
+                component={BookDetail}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/shop/games/:id"
+          render={props => {
+            return (
+              <ProductDetail
+                {...props}
+                productAPI={API.getGame}
+                component={GameDetail}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/shop/movies/:id"
+          render={props => {
+            return (
+              <ProductDetail
+                {...props}
+                productAPI={API.getOneMovie}
+                component={MovieDetail}
+              />
+            );
+          }}
+        />
+
         {this.state.cart.length > 0 ? (
           <Cart products={this.state.cart} />
         ) : null}

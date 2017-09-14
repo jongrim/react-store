@@ -25,7 +25,7 @@ const ProductCard = props => {
 
   return (
     <div className="product-card" style={style}>
-      <Link to={`/${category}/${id}`}>
+      <Link to={`/shop/${category}/${id}`}>
         <h5>{name}</h5>
       </Link>
       <img src={imgUrl} alt="Product thumbnail" />

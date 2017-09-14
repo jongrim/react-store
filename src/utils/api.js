@@ -19,7 +19,9 @@ function getBooks() {
 
 function getOneBook(id) {
   return axios.get(`${API_URL}/books/${id}`).then(result => {
-    return result.data;
+    return getGoogleBookJSON(result.data.title).then(response => {
+      return response.items[0];
+    });
   });
 }
 
@@ -41,6 +43,14 @@ function getMovieJSON(title) {
   });
 }
 
+function getOneMovie(id) {
+  return getResource(`/movies/${id}`).then(result => {
+    return getMovieJSON(result.title).then(response => {
+      return response;
+    });
+  });
+}
+
 function getGame(id) {
   return axios.get(`${API_URL}/games/${id}`).then(result => {
     return result.data;
@@ -53,7 +63,8 @@ const API = {
   getResource: getResource,
   getGoogleBookJSON,
   getMovieJSON,
-  getGame
+  getGame,
+  getOneMovie
 };
 
 export default API;
