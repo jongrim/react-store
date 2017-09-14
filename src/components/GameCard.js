@@ -21,6 +21,12 @@ export default class GameCard extends Component {
   }
 
   render() {
-    return <ProductCard {...this.props} imgUrl={this.state.imgUrl} />;
+    return (
+      <ProductCard
+        {...this.props}
+        imgUrl={this.state.imgUrl}
+        category="games"
+      />
+    );
   }
 }

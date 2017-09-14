@@ -22,6 +22,12 @@ export default class BookCard extends Component {
   }
 
   render() {
-    return <ProductCard {...this.props} imgUrl={this.state.imgUrl} />;
+    return (
+      <ProductCard
+        {...this.props}
+        imgUrl={this.state.imgUrl}
+        category="books"
+      />
+    );
   }
 }

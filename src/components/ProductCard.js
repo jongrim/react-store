@@ -2,6 +2,7 @@ import React from 'react';
 import { BlueButton } from './Buttons';
 import PropTypes from 'prop-types';
 import { formatPrice } from '../utils/utils';
+import { Link } from 'react-router-dom';
 import '../css/ProductCard.css';
 
 const style = {
@@ -15,7 +16,7 @@ const style = {
 };
 
 const ProductCard = props => {
-  const { id, name, price, addToCart, imgUrl } = props;
+  const { id, name, price, addToCart, imgUrl, category } = props;
   const product = {
     id,
     name,
@@ -24,7 +25,9 @@ const ProductCard = props => {
 
   return (
     <div className="product-card" style={style}>
-      <h3>{name}</h3>
+      <Link to={`/${category}/${id}`}>
+        <h5>{name}</h5>
+      </Link>
       <img src={imgUrl} alt="Product thumbnail" />
       <p>{formatPrice(price)}</p>
       <BlueButton small clickAction={addToCart} dataObj={product}>
