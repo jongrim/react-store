@@ -14,9 +14,10 @@ import GameCard from './GameCard';
 import MovieCard from './MovieCard';
 
 const storeFrontStyle = {
-  height: '100%',
+  minHeight: '100%',
   width: '100%',
-  display: 'flex'
+  display: 'flex',
+  flex: '1'
 };
 
 class Store extends Component {

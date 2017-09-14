@@ -1,14 +1,9 @@
 import React from 'react';
 
-const detailPaneStyle = {
-  padding: '0 1em',
-  overflow: 'auto'
-};
-
 const BookDetail = props => {
   const product = props.dataObj;
   return (
-    <div style={detailPaneStyle}>
+    <div>
       <h3>{product.volumeInfo.title}</h3>
       {product.volumeInfo.authors.map((author, i) => <p key={i}>{author}</p>)}
       <img

@@ -1,11 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const sidebarStyle = {
+const sidebarContainer = {
   display: 'flex',
   flexDirection: 'column',
-  flexBasis: '192px',
-  flexShrink: '0',
+  flex: '0 0 192px',
   backgroundColor: '#f5f5f5'
 };
 
@@ -21,8 +20,19 @@ const activeLinkStyle = {
   color: '#f5f5f5'
 };
 
+const sidebarLinks = {
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'sticky',
+  top: '15px'
+};
+
 const Sidebar = props => {
-  return <div style={sidebarStyle}>{props.children}</div>;
+  return (
+    <div style={sidebarContainer}>
+      <div style={sidebarLinks}>{props.children}</div>
+    </div>
+  );
 };
 
 const SidebarLink = props => {

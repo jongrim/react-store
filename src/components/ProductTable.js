@@ -10,8 +10,7 @@ const style = {
   alignContent: 'flex-start',
   flexWrap: 'wrap',
   flexBasis: '640px',
-  flexGrow: '1',
-  overflow: 'auto'
+  flexGrow: '1'
 };
 
 export default class ProductTable extends Component {

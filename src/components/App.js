@@ -7,7 +7,7 @@ const appStyle = {
   display: 'flex',
   flexDirection: 'column',
   fontFamily: "'Raleway', 'Quicksand', sans-serif",
-  height: '100%'
+  minHeight: '100%'
 };
 
 class App extends Component {
