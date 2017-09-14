@@ -5,6 +5,7 @@ const sidebarStyle = {
   display: 'flex',
   flexDirection: 'column',
   flexBasis: '192px',
+  flexShrink: '0',
   backgroundColor: '#f5f5f5'
 };
 

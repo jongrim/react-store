@@ -19,7 +19,7 @@ function getBooks() {
 
 function getOneBook(id) {
   return axios.get(`${API_URL}/books/${id}`).then(result => {
-    return result;
+    return result.data;
   });
 }
 
