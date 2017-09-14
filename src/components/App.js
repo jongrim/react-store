@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
 import Store from './Store';
+import BookDetail from './BookDetail.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const appStyle = {
@@ -18,6 +19,9 @@ class App extends Component {
           <Nav />
           <Route exact path="/" render={() => <p>Hi</p>} />
           <Route path="/shop" component={Store} />
+          <Route path="/books/:id" component={BookDetail} />
+          <Route path="/games/:id" />
+          <Route path="/movies/:id" />
         </div>
       </Router>
     );
