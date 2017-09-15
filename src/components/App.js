@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Home from './Home.js';
 import Nav from './Nav';
 import Store from './Store';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -16,7 +17,7 @@ class App extends Component {
       <Router>
         <div style={appStyle}>
           <Nav />
-          <Route exact path="/" render={() => <p>Hi</p>} />
+          <Route exact path="/" component={Home} />
           <Route path="/shop" component={Store} />
         </div>
       </Router>
