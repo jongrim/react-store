@@ -1,6 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+export const BlankButton = props => {
+  const style = {
+    border: 'none',
+    backgroundColor: 'transparent',
+    margin: '0',
+    padding: '0',
+    fontSize: '18px',
+    boxShadow: 'none',
+    cursor: 'pointer',
+    textAlign: 'center'
+  };
+
+  return (
+    <Button
+      style={style}
+      clickAction={props.clickAction}
+      dataObj={props.dataObj}>
+      {props.children}
+    </Button>
+  );
+};
+
+BlankButton.propTypes = {
+  clickAction: PropTypes.func.isRequired,
+  dataObj: PropTypes.object
+};
+
+BlankButton.defaultProps = {
+  small: true,
+  clickAction: null,
+  dataObj: null
+};
+
 export const WhiteButton = props => {
   const style = {
     color: '#FFFFFA',
