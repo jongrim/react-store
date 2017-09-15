@@ -137,7 +137,12 @@ class Store extends Component {
         />
 
         {this.props.cart.length > 0 ? (
-          <Cart products={this.props.cart} />
+          <Cart
+            products={this.props.cart}
+            increaseQuantity={this.props.increaseQuantity}
+            decreaseQuantity={this.props.decreaseQuantity}
+            removeFromCart={this.props.removeFromCart}
+          />
         ) : null}
       </div>
     );

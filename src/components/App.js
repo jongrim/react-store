@@ -19,6 +19,9 @@ class App extends Component {
     };
 
     this.addToCart = this.addToCart.bind(this);
+    this.increaseQuantity = this.increaseQuantity.bind(this);
+    this.decreaseQuantity = this.decreaseQuantity.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   addToCart(product) {
@@ -37,6 +40,38 @@ class App extends Component {
     });
   }
 
+  increaseQuantity(product) {
+    this.setState(prevState => {
+      let cart = prevState.cart;
+      let itemIndex = cart.findIndex(item => item.name === product.name);
+      cart[itemIndex].quantity++;
+      return cart;
+    });
+  }
+
+  decreaseQuantity(product) {
+    this.setState(prevState => {
+      let cart = prevState.cart;
+      let itemIndex = cart.findIndex(item => item.name === product.name);
+      if (cart[itemIndex].quantity === 1) {
+        cart = cart.splice(itemIndex, 1);
+        return cart;
+      } else {
+        cart[itemIndex].quantity--;
+        return cart;
+      }
+    });
+  }
+
+  removeFromCart(product) {
+    this.setState(prevState => {
+      let cart = prevState.cart;
+      let itemIndex = cart.findIndex(item => item.name === product.name);
+      cart = cart.splice(itemIndex, 1);
+      return cart;
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -47,7 +82,13 @@ class App extends Component {
             path="/shop"
             render={props => {
               return (
-                <Store cart={this.state.cart} addToCart={this.addToCart} />
+                <Store
+                  cart={this.state.cart}
+                  addToCart={this.addToCart}
+                  increaseQuantity={this.increaseQuantity}
+                  decreaseQuantity={this.decreaseQuantity}
+                  removeFromCart={this.removeFromCart}
+                />
               );
             }}
           />

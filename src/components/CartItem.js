@@ -29,7 +29,15 @@ export default class CartItem extends Component {
   }
 
   render() {
-    let { item, quantity, price } = this.props;
+    let {
+      item,
+      quantity,
+      price,
+      product,
+      increaseQuantity,
+      decreaseQuantity,
+      removeFromCart
+    } = this.props;
     return (
       <div onMouseEnter={this.setHovered} onMouseLeave={this.setHovered}>
         {this.state.hovered ? (
@@ -42,7 +50,7 @@ export default class CartItem extends Component {
             </div>
             <div style={cartRowStyle}>
               <span>
-                <BlankButton clickAction={() => null}>
+                <BlankButton clickAction={() => decreaseQuantity(product)}>
                   <span
                     style={{ color: '#712F79' }}
                     className="fa fa-cart-arrow-down"
@@ -51,7 +59,7 @@ export default class CartItem extends Component {
                 <span style={{ padding: '0 0.5rem', fontSize: '1rem' }}>
                   {quantity}
                 </span>
-                <BlankButton clickAction={() => null}>
+                <BlankButton clickAction={() => increaseQuantity(product)}>
                   <span
                     style={{ color: '#712F79' }}
                     className="fa fa-cart-plus"
@@ -59,7 +67,7 @@ export default class CartItem extends Component {
                 </BlankButton>
               </span>
               <span>
-                <BlankButton clickAction={() => console.log('click!')}>
+                <BlankButton clickAction={() => removeFromCart(product)}>
                   <span style={{ color: '#F15025' }} className="fa fa-ban" />
                 </BlankButton>
               </span>

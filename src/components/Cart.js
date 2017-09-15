@@ -17,7 +17,12 @@ const Cart = props => {
     top: '0px'
   };
 
-  const { products } = props;
+  const {
+    products,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart
+  } = props;
 
   return (
     <div style={cartContainer}>
@@ -43,6 +48,10 @@ const Cart = props => {
               item={product.name}
               price={product.price}
               quantity={product.quantity}
+              product={product}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+              removeFromCart={removeFromCart}
             />
           );
         })}
