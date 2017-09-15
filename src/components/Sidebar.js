@@ -4,20 +4,18 @@ import { NavLink } from 'react-router-dom';
 const sidebarContainer = {
   display: 'flex',
   flexDirection: 'column',
-  flex: '0 0 192px',
-  backgroundColor: '#f5f5f5'
+  flex: '0 0 195px',
+  borderRight: '1px solid #f5f5f5'
 };
 
 const sidebarLinkStyle = {
   textDecoration: 'none',
   color: 'rgb(158, 158, 158)',
-  padding: '0.5em 0 0.25em 1em',
-  borderBottom: '1px solid #dddddd'
+  padding: '0.5em 0 0.25em 1em'
 };
 
 const activeLinkStyle = {
-  backgroundColor: 'rgba(25, 25, 25, 0.5)',
-  color: '#f5f5f5'
+  color: '#2d5199'
 };
 
 const sidebarLinks = {
