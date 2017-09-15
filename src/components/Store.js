@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Cart from './Cart';
-import ProductTable from './ProductTable';
-import ProductDetail from './ProductDetail.js';
 import BookDetail from './BookDetail.js';
+import Cart from './Cart';
 import GameDetail from './GameDetail.js';
+import JumboDisplay from './JumboDisplay.js';
 import MovieDetail from './MovieDetail.js';
+import ProductDetail from './ProductDetail.js';
+import ProductTable from './ProductTable';
 import { Sidebar, SidebarLink } from './Sidebar.js';
 import { Route } from 'react-router-dom';
 import API from '../utils/api.js';
@@ -23,13 +24,7 @@ const storeFrontStyle = {
 class Store extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      cart: []
-    };
-
     this.handlePurchase = this.handlePurchase.bind(this);
-    this.addToCart = this.addToCart.bind(this);
   }
 
   handlePurchase(event, product, quantity) {
@@ -48,22 +43,6 @@ class Store extends Component {
       });
   }
 
-  addToCart(product) {
-    this.setState(prevState => {
-      let cart = prevState.cart;
-      let itemIndex = cart.findIndex(item => item.name === product.name);
-      if (itemIndex !== -1) {
-        cart[itemIndex].quantity++;
-      } else {
-        product.quantity = 1;
-        cart.push(product);
-      }
-      return {
-        cart
-      };
-    });
-  }
-
   render() {
     return (
       <div style={storeFrontStyle}>
@@ -74,11 +53,25 @@ class Store extends Component {
         </Sidebar>
         <Route
           exact
+          path="/shop"
+          render={() => {
+            return (
+              <JumboDisplay bgColor="#F15025">
+                <h1 style={{ fontSize: '4rem', fontWeight: '100' }}>
+                  Check out the amazing deals
+                </h1>
+                <p style={{ fontSize: '2rem' }}>← Look here!</p>
+              </JumboDisplay>
+            );
+          }}
+        />
+        <Route
+          exact
           path="/shop/books"
           render={() => (
             <ProductTable
               productAPI="/books"
-              addToCart={this.addToCart}
+              addToCart={this.props.addToCart}
               cardType={BookCard}
             />
           )}
@@ -89,7 +82,7 @@ class Store extends Component {
           render={() => (
             <ProductTable
               productAPI="/games"
-              addToCart={this.addToCart}
+              addToCart={this.props.addToCart}
               cardType={GameCard}
             />
           )}
@@ -100,7 +93,7 @@ class Store extends Component {
           render={() => (
             <ProductTable
               productAPI="/movies"
-              addToCart={this.addToCart}
+              addToCart={this.props.addToCart}
               cardType={MovieCard}
             />
           )}
@@ -143,8 +136,8 @@ class Store extends Component {
           }}
         />
 
-        {this.state.cart.length > 0 ? (
-          <Cart products={this.state.cart} />
+        {this.props.cart.length > 0 ? (
+          <Cart products={this.props.cart} />
         ) : null}
       </div>
     );
