@@ -5,8 +5,6 @@ import API from '../utils/api.js';
 
 const style = {
   display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'flex-start',
   alignContent: 'flex-start',
   flexWrap: 'wrap',
   flexBasis: '640px',
