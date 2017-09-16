@@ -10,7 +10,7 @@ const GOOGLE_API_URL = title => {
 };
 
 const OMDB_API_URL = title => {
-  return `http://www.omdbapi.com/?apikey=40e9cece&t=${title}`;
+  return `https://www.omdbapi.com/?apikey=40e9cece&t=${title}`;
 };
 
 function getBooks() {
