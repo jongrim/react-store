@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProductCard from './ProductCard';
 import API from '../utils/api.js';
 
 const style = {

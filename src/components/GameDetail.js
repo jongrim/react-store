@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Sidebar, SidebarLink } from './Sidebar.js';
+import React from 'react';
 
 const GameDetail = props => {
   const product = props.dataObj;

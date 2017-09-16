@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Sidebar, SidebarLink } from './Sidebar.js';
 
 const containerStyle = {
   height: '100%',
