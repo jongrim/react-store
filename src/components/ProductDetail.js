@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+const Spinner = require('react-spinkit');
 
 const containerStyle = {
   height: '100%',
   width: '100%',
   padding: '0 1em',
+  flexGrow: '1'
+};
+
+const centered = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   flexGrow: '1'
 };
 
@@ -34,7 +42,9 @@ export default class ProductDetail extends Component {
         <Wrapper dataObj={product} />
       </div>
     ) : (
-      <div style={containerStyle}>Loading</div>
+      <div style={centered}>
+        <Spinner name="line-scale" color="#712F79" />
+      </div>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const style = {
   height: '140px',
-  width: '80px',
+  width: '100px',
   backgroundRepeat: 'no-repeat',
   backgroundImage: 'linear-gradient(45deg, #cccccc, #e5e5e5)',
   backgroundSize: '100% 100%',
