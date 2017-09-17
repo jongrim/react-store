@@ -14,6 +14,7 @@ const Cart = props => {
 
   const cartPieces = {
     position: 'sticky',
+    position: '-webkit-sticky',
     top: '0px'
   };
 

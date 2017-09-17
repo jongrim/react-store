@@ -22,6 +22,7 @@ const sidebarLinks = {
   display: 'flex',
   flexDirection: 'column',
   position: 'sticky',
+  position: '-webkit-sticky',
   top: '15px'
 };
 
