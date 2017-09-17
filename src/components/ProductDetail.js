@@ -43,7 +43,7 @@ export default class ProductDetail extends Component {
       </div>
     ) : (
       <div style={centered}>
-        <Spinner name="line-scale" color="#712F79" />
+        <Spinner name="line-scale" color="#712F79" fadeIn="quarter" />
       </div>
     );
   }

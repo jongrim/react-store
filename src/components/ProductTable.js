@@ -55,7 +55,7 @@ export default class ProductTable extends Component {
     } else {
       return (
         <div style={centered}>
-          <Spinner name="line-scale" color="#712F79" />
+          <Spinner name="line-scale" color="#712F79" fadeIn="quarter" />
         </div>
       );
     }
