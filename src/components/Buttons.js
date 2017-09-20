@@ -29,8 +29,7 @@ BlankButton.propTypes = {
 };
 
 BlankButton.defaultProps = {
-  small: true,
-  clickAction: null,
+  clickAction: () => null,
   dataObj: null
 };
 
@@ -66,7 +65,7 @@ WhiteButton.propTypes = {
 
 WhiteButton.defaultProps = {
   small: true,
-  clickAction: null,
+  clickAction: () => null,
   dataObj: null
 };
 
@@ -102,7 +101,7 @@ BlackButton.propTypes = {
 
 BlackButton.defaultProps = {
   small: true,
-  clickAction: null,
+  clickAction: () => null,
   dataObj: null
 };
 
@@ -112,7 +111,7 @@ export const BlueButton = props => {
     border: '2px solid #2D5199',
     backgroundColor: 'transparent',
     height: props.small ? '20px' : '50px',
-    width: props.small ? '80px' : '100px',
+    width: props.small ? '90px' : '120px',
     fontSize: props.small ? '12px' : '16px',
     boxShadow: 'none',
     cursor: 'pointer',
@@ -160,7 +159,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  clickAction: null,
+  clickAction: () => null,
   dataObj: null
 };
 
