@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import ProductCard from './ProductCard.js';
 import API from '../utils/api.js';
+import ProductCard from './ProductCard.js';
+import PropTypes from 'prop-types';
 
 export default class GameCard extends Component {
+  static propTypes = {
+    id: PropTypes.number.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {

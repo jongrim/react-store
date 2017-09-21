@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import BookDetail from './BookDetail.js';
+import API from '../utils/api.js';
 import Cart from './Cart';
-import GameDetail from './GameDetail.js';
 import JumboDisplay from './JumboDisplay.js';
-import MovieDetail from './MovieDetail.js';
-import ProductDetail from './ProductDetail.js';
-import ProductTable from './ProductTable';
 import { Sidebar, SidebarLink } from './Sidebar.js';
 import { Route } from 'react-router-dom';
-import API from '../utils/api.js';
-
+import PropTypes from 'prop-types';
+import BookDetail from './BookDetail.js';
+import GameDetail from './GameDetail.js';
+import MovieDetail from './MovieDetail.js';
 import BookCard from './BookCard';
 import GameCard from './GameCard';
 import MovieCard from './MovieCard';
+import ProductDetail from './ProductDetail.js';
+import ProductTable from './ProductTable';
 
 const storeFrontStyle = {
   minHeight: '100%',
@@ -22,25 +22,19 @@ const storeFrontStyle = {
 };
 
 class Store extends Component {
+  static propTypes = {
+    cart: PropTypes.array,
+    increaseQuantity: PropTypes.func.isRequired,
+    decreaseQuantity: PropTypes.func.isRequired,
+    removeFromCart: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    cart: []
+  };
+
   constructor(props) {
     super(props);
-    this.handlePurchase = this.handlePurchase.bind(this);
-  }
-
-  handlePurchase(event, product, quantity) {
-    event.preventDefault();
-    fetch('/customer', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ product_id: product, quantity: quantity })
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ message: data.message });
-      });
   }
 
   render() {

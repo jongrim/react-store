@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const BookDetail = props => {
   const product = props.dataObj;
@@ -14,6 +15,10 @@ const BookDetail = props => {
       <p>{product.volumeInfo.description}</p>
     </div>
   );
+};
+
+BookDetail.propTypes = {
+  dataObj: PropTypes.object.isRequired
 };
 
 export default BookDetail;

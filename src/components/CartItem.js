@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { formatPrice } from '../utils/utils';
 import { BlankButton } from './Buttons.js';
+import { formatPrice } from '../utils/utils';
+import PropTypes from 'prop-types';
 
 const cartRowStyle = {
   display: 'flex',
@@ -12,6 +13,16 @@ const cartRowStyle = {
 };
 
 export default class CartItem extends Component {
+  static propTypes = {
+    item: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
+    product: PropTypes.object.isRequired,
+    increaseQuantity: PropTypes.func.isRequired,
+    decreaseQuantity: PropTypes.func.isRequired,
+    removeFromCart: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {

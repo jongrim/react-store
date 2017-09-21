@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import ProductCard from './ProductCard.js';
 import API from '../utils/api.js';
+import ProductCard from './ProductCard.js';
+import PropTypes from 'prop-types';
 
 export default class MovieCard extends Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,12 +17,16 @@ export default class MovieCard extends Component {
   }
 
   componentDidMount() {
-    API.getMovieJSON(this.props.name).then(result => {
-      this.setState({
-        imgUrl: result.Poster,
-        dataObj: result
+    API.getMovieJSON(this.props.name)
+      .then(result => {
+        this.setState({
+          imgUrl: result.Poster,
+          dataObj: result
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
   }
 
   render() {

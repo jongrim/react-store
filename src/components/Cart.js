@@ -1,6 +1,7 @@
 import React from 'react';
-import { formatPrice } from '../utils/utils';
 import CartItem from './CartItem';
+import { formatPrice } from '../utils/utils';
+import PropTypes from 'prop-types';
 
 const Cart = props => {
   const cartContainer = {
@@ -14,7 +15,7 @@ const Cart = props => {
 
   const cartPieces = {
     position: 'sticky',
-    position: '-webkit-sticky',
+    webkitPosition: 'sticky',
     top: '0px'
   };
 
@@ -61,7 +62,14 @@ const Cart = props => {
   );
 };
 
-const cartHeading = {
+Cart.propTypes = {
+  products: PropTypes.array.isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired
+};
+
+const cartHeadingStyle = {
   color: '#333333',
   borderBottom: '2px solid #333333',
   fontSize: '1em',
@@ -72,7 +80,7 @@ const cartHeading = {
 
 const CartHeading = props => {
   return (
-    <h2 style={cartHeading}>
+    <h2 style={cartHeadingStyle}>
       <span className="fa fa-shopping-cart" /> {props.children}
     </h2>
   );

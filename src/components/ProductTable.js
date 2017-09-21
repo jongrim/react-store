@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import API from '../utils/api.js';
+import PropTypes from 'prop-types';
 const Spinner = require('react-spinkit');
 
 const style = {

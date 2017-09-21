@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const sidebarContainer = {
   display: 'flex',
@@ -22,7 +23,7 @@ const sidebarLinks = {
   display: 'flex',
   flexDirection: 'column',
   position: 'sticky',
-  position: '-webkit-sticky',
+  WebkitPosition: 'sticky',
   top: '15px'
 };
 
@@ -43,6 +44,10 @@ const SidebarLink = props => {
       {props.children}
     </NavLink>
   );
+};
+
+SidebarLink.propTypes = {
+  to: PropTypes.string.isRequired
 };
 
 export { Sidebar, SidebarLink };

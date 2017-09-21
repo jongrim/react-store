@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 const Spinner = require('react-spinkit');
 
 const containerStyle = {
@@ -16,6 +17,10 @@ const centered = {
 };
 
 export default class ProductDetail extends Component {
+  static propTypes = {
+    component: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +32,6 @@ export default class ProductDetail extends Component {
     const id = this.props.match.params.id;
     const apiFn = this.props.productAPI;
     apiFn(id).then(result => {
-      console.log(result);
       this.setState({
         dataObj: result
       });
