@@ -33,10 +33,6 @@ class Store extends Component {
     cart: []
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div style={storeFrontStyle}>

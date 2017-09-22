@@ -2,6 +2,7 @@ import React from 'react';
 import CartItem from './CartItem';
 import { formatPrice } from '../utils/utils';
 import PropTypes from 'prop-types';
+import '../css/CartPieces.css';
 
 const Cart = props => {
   const cartContainer = {
@@ -13,12 +14,6 @@ const Cart = props => {
     padding: '0 4px'
   };
 
-  const cartPieces = {
-    position: 'sticky',
-    webkitPosition: 'sticky',
-    top: '0px'
-  };
-
   const {
     products,
     increaseQuantity,
@@ -28,7 +23,7 @@ const Cart = props => {
 
   return (
     <div style={cartContainer}>
-      <div style={cartPieces}>
+      <div className="cart-pieces">
         <CartHeading>
           {products.length > 0 ? (
             <span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../css/SidebarLinks.css';
 
 const sidebarContainer = {
   display: 'flex',
@@ -19,18 +20,10 @@ const activeLinkStyle = {
   color: '#2d5199'
 };
 
-const sidebarLinks = {
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'sticky',
-  WebkitPosition: 'sticky',
-  top: '15px'
-};
-
 const Sidebar = props => {
   return (
     <div style={sidebarContainer}>
-      <div style={sidebarLinks}>{props.children}</div>
+      <div className="sidebar-links">{props.children}</div>
     </div>
   );
 };

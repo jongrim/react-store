@@ -1,0 +1,7 @@
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 15px;
+}
