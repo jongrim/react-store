@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a button with text 1`] = `
+<button
+  onClick={[Function]}
+  style={undefined}
+>
+  TEXT
+</button>
+`;
